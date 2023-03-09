@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+        body {
+          margin: 0;
+          padding: 0;
+        }
+  
+        #slider {
+          position: relative;
+          height: 100vh;
+          overflow: hidden;
+        }
+        
+        #slider img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          object-position: center;
+        }
+  
+        #next, #prev {
+          position: absolute;
+          top: 50%;
+          padding: 10px;
+          cursor: pointer;
+          color: #fff;
+          background-color: #333;
+          border: none;
+        }
+  
+        #next {
+          right: 10px;
+        }
+  
+        #prev {
+          left: 10px;
+        }
+  
+        #next i, #prev i {
+          font-size: 20px;
+          margin-left: 5px;
+        }
+      </style>
+    </head>
+        
+  <body>
+    <div id="slider">
+      <img src="image1.jpg" alt="Image 1">
+      <img src="image2.jpg" alt="Image 2">
+      <img src="image3.jpg" alt="Image 3">
+      <img src="image4.jpg" alt="Image 4">
+      <img src="image5.jpg" alt="Image 5">
+      <img src="image6.jpg" alt="Image 6">
+      <img src="image7.jpg" alt="Image 7">
+      <img src="image8.jpg" alt="Image 8">
+      <img src="image9.jpg" alt="Image 9">
+      <img src="image10.jpg" alt="Image 10">
+      <img src="image11.jpg" alt="Image 11">
+      <img src="image12.jpg" alt="Image 12">
+      <img src="image13.jpg" alt="Image 13">
+      <img src="image14.jpg" alt="Image 14">
+      <img src="image15.jpg" alt="Image 15">
+      <img src="image16.jpg" alt="Image 16">
+      <img src="image17.jpg" alt="Image 17">
+      <img src="image18.jpg" alt="Image 18">
+      <img src="image19.jpg" alt="Image 19">
+      <img src="image20.jpg" alt="Image 20">
+
+      <button id="prev"><i class="fa fa-chevron-left"></i><span>Prev</span></button>
+      <button id="next"><span>Next</span><i class="fa fa-chevron-right"></i></button>
+    </div>
+    <script>
+      var slider = document.getElementById("slider");
+      var images = slider.getElementsByTagName("img");
+      var index = 0;
+      function slide() {
+        for (var i = 0; i < images.length; i++) {
+          images[i].style.display = "none";
+        }
+        index++;
+        if (index > images.length) {
+          index = 1;
+        }
+        images[index - 1].style.display = "block";
+      }
+      slide();
+
+      // add event listener to next button
+      var nextButton = document.getElementById("next");
+      nextButton.addEventListener("click", function() {
+        slide();
+      });
+
+      
+      var prevButton = document.getElementById("prev");
+      prevButton.addEventListener("click", function() {
+        for (var i = 0; i < images.length; i++) {
+          images[i].style.display = "none";
+        }
+        index--;
+        if (index < 1) {
+          index = images.length;
+        }
+        images[index - 1].style.display = "block";
+      });
+    </script>
+  </body>
+</html>
